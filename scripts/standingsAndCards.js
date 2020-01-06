@@ -12,169 +12,258 @@
 // Data Structures
 // ###############
 
-// Dict Format --> Abr: [Wins Owner, Losses Owner, Wins, Losses, Ties]
-// Shows who owns each team
+// Teams
+const arizona =  "ARI";
+const atlanta =  "ATL";
+const baltimore =  "BAL";
+const buffalo =  "BUF";
+const carolina =  "CAR";
+const chicago =  "CHI";
+const cincinatti =  "CIN";
+const cleveland =  "CLE";
+const dallas =  "DAL";
+const denver =  "DEN";
+const detroit =  "DET";
+const greenBay =  "GB";
+const houston =  "HOU";
+const indianapolis =  "IND";
+const jacksonville =  "JAC"; // JSON file uses "JAX"
+const kansasCity =  "KC";
+const losAngelesRams =  "LA";
+const losAngelesChargers =  "LAC";
+const miami =  "MIA";
+const minnesota =  "MIN";
+const newEngland =  "NE";
+const newOrleans =  "NO";
+const newYorkGiants =  "NYG";
+const newYorkJets =  "NYJ";
+const oakland =  "OAK";
+const philadelphia =  "PHI";
+const pittsburgh =  "PIT";
+const sanFrancisco =  "SF";
+const seatle =  "SEA";
+const tampaBay =  "TB";
+const tennessee =  "TEN";
+const washington =  "WAS";
+
+//Owners
+const barbara = "Barbara";
+const hogan = "Hogan";
+const howard = "Howard";
+const jamie = "Jamie";
+const jessica = "Jessica"
+const narva = "Narva";
+const susan = "Susan";
+const teamConn = "Team Conn";
+const thome = "Thome";
+const tyler = "Tyler";
+
+const ownersToPickNum = {
+  [barbara]: 8,
+  [hogan]: 6,
+  [howard]: 9,
+  [jamie]: 1,
+  [jessica]: 4,
+  [narva]: 7,
+  [susan]: 10,
+  [teamConn]: 2,
+  [thome]: 3,
+  [tyler]: 5
+};
+
+// const createTeamOwnership = (winsOwner, lossesOwner) => {
+//   return {
+//     winsOwner: winsOwner,
+//     lossesOwner: lossesOwner,
+//     wins: 0,
+//     losses: 0,
+//     ties: 0
+//   };
+// };
+function createTeamOwnership(winsOwner, lossesOwner) {
+  return {
+    winsOwner: winsOwner,
+    lossesOwner: lossesOwner,
+    wins: 0,
+    losses: 0,
+    ties: 0
+  };
+};
+
 var teams = {
-  "ARI": ["Howard", "Tyler", 0, 0, 0],
-  "ATL": ["Howard", "Hogan", 0, 0, 0],
-  "BAL": ["Jamie", "Jessica", 0, 0, 0],
-  "BUF": ["Thome", "Team Conn", 0, 0, 0],
-  "CAR": ["Barbara", "Jessica", 0, 0, 0],
-  "CHI": ["Susan", "Narva", 0, 0, 0],
-  "CIN": [null, "Thome", 0, 0, 0],
-  "CLE": ["Howard", "Jamie", 0, 0, 0],
-  "DAL": ["Team Conn", "Hogan", 0, 0, 0],
-  "DEN": ["Susan", "Thome", 0, 0, 0],
-  "DET": ["Howard", "Jessica", 0, 0, 0],
-  "GB": ["Tyler", "Narva", 0, 0, 0],
-  "HOU": ["Jamie", "Barbara", 0, 0, 0],
-  "IND": ["Hogan", "Tyler", 0, 0, 0],
-  "JAC": ["Tyler", "Narva", 0, 0, 0], // JSON file uses "JAX"
-  "KC": ["Thome", null, 0, 0, 0],
-  "LA": ["Howard", null, 0, 0, 0],
-  "LAC": ["Hogan", "Jessica", 0, 0, 0],
-  "MIA": ["Barbara", "Jamie", 0, 0, 0],
-  "MIN": ["Susan", "Tyler", 0, 0, 0],
-  "NE": ["Team Conn", "Thome", 0, 0, 0],
-  "NO": ["Barbara", "Jamie", 0, 0, 0],
-  "NYG": ["Jamie", "Narva", 0, 0, 0],
-  "NYJ": ["Susan", "Team Conn", 0, 0, 0],
-  "OAK": [null, "Narva", 0, 0, 0],
-  "PHI": ["Thome", "Howard", 0, 0, 0],
-  "PIT": ["Barbara", "Susan", 0, 0, 0],
-  "SF": ["Barbara", "Hogan", 0, 0, 0],
-  "SEA": ["Jessica", "Hogan", 0, 0, 0],
-  "TB": ["Tyler", "Susan", 0, 0, 0],
-  "TEN": ["Team Conn", "Jessica", 0, 0, 0],
-  "WAS": ["Team Conn", "Narva", 0, 0, 0]
-}
+  [arizona]: createTeamOwnership(howard, tyler),
+  [atlanta]: createTeamOwnership(howard, hogan),
+  [baltimore]: createTeamOwnership(jamie, jessica),
+  [buffalo]: createTeamOwnership(thome, teamConn),
+  [carolina]: createTeamOwnership(barbara, jessica),
+  [chicago]: createTeamOwnership(susan, narva),
+  [cincinatti]: createTeamOwnership(null, thome), 
+  [cleveland]: createTeamOwnership(howard, jamie),
+  [dallas]: createTeamOwnership(teamConn, hogan),
+  [denver]: createTeamOwnership(susan, thome),
+  [detroit]: createTeamOwnership(howard, jessica),
+  [greenBay]: createTeamOwnership(tyler, narva),
+  [houston]: createTeamOwnership(jamie, barbara),
+  [indianapolis]: createTeamOwnership(hogan, tyler),
+  [jacksonville]: createTeamOwnership(tyler, narva),
+  [kansasCity]: createTeamOwnership(thome, null),
+  [losAngelesRams]: createTeamOwnership(howard, null), 
+  [losAngelesChargers]: createTeamOwnership(hogan, jessica),
+  [miami]: createTeamOwnership(barbara, jamie),
+  [minnesota]: createTeamOwnership(susan, tyler),
+  [newEngland]: createTeamOwnership(teamConn, thome),
+  [newOrleans]: createTeamOwnership(barbara, jamie),
+  [newYorkGiants]: createTeamOwnership(jamie, narva),
+  [newYorkJets]: createTeamOwnership(susan, teamConn),  
+  [oakland]: createTeamOwnership(null, narva), 
+  [philadelphia]: createTeamOwnership(thome, howard),
+  [pittsburgh]: createTeamOwnership(barbara, susan),
+  [sanFrancisco]: createTeamOwnership(barbara, hogan),
+  [seatle]: createTeamOwnership(jessica, hogan),
+  [tampaBay]: createTeamOwnership(tyler, susan),
+  [tennessee]: createTeamOwnership(teamConn, jessica),
+  [washington]: createTeamOwnership(teamConn, narva)
+};
 
-var standings = {
-  "Narva": [
-    [-1, -1, 7], // Rank, Total Pts., and Rd 1 pick #
-    ["OAK", "L", ""], // Blank string will hold pts for each team
-    ["WAS", "L", ""],
-    ["NYG", "L", ""],
-    ["JAC", "L", ""],
-    ["CHI", "L", ""],
-    ["GB", "L", ""]
-  ],
-  "Jamie": [
-    [-1, -1, 1], // Rank, Total Pts., and Rd 1 pick #
-    ["MIA", "L", ""], // Blank string will hold pts for each team
-    ["HOU", "W", ""],
-    ["BAL", "W", ""],
-    ["CLE", "L", ""],
-    ["NYG", "W", ""],
-    ["NO", "L", ""]
-  ],
-  "Barbara": [
-    [-1, -1, 8], // Rank, Total Pts., and Rd 1 pick #
-    ["NO", "W", ""], // Blank string will hold pts for each team
-    ["PIT", "W", ""],
-    ["HOU", "L", ""],
-    ["CAR", "W", ""],
-    ["SF", "W", ""],
-    ["MIA", "W", ""]
-  ],
-  "Jessica": [
-    [-1, -1, 4], // Rank, Total Pts., and Rd 1 pick #
-    ["SEA", "W", ""], // Blank string will hold pts for each team
-    ["DET", "L", ""],
-    ["TEN", "L", ""],
-    ["CAR", "L", ""],
-    ["BAL", "L", ""],
-    ["LAC", "L", ""]
-  ],
-  "Hogan": [
-    [-1, -1, 6], // Rank, Total Pts., and Rd 1 pick #
-    ["CIN", "L", ""], // Blank string will hold pts for each team
-    ["LAC", "W", ""],
-    ["IND", "W", ""],
-    ["SF", "L", ""],
-    ["ATL", "L", ""],
-    ["SEA", "L", ""]
-  ],
-  "Thome": [
-    [-1, -1, 3], // Rank, Total Pts., and Rd 1 pick #
-    ["KC", "W", ""], // Blank string will hold pts for each team
-    ["PHI", "W", ""],
-    ["DEN", "L", ""],
-    ["DAL", "L", ""],
-    ["BUF", "W", ""],
-    ["NE", "L", ""]
-  ],
-  "Susan": [
-    [-1, -1, 10], // Rank, Total Pts., and Rd 1 pick #
-    ["CHI", "W", ""], // Blank string will hold pts for each team
-    ["TB", "L", ""],
-    ["MIN", "W", ""],
-    ["DEN", "W", ""],
-    ["NYJ", "W", ""],
-    ["PIT", "L", ""]
-  ],
-  "Team Conn": [
-    [-1, -1, 2], // Rank, Total Pts., and Rd 1 pick #
-    ["NE", "W", ""], // Blank string will hold pts for each team
-    ["BUF", "L", ""],
-    ["DAL", "W", ""],
-    ["NYJ", "L", ""],
-    ["TEN", "W", ""],
-    ["WAS", "W", ""]
-  ],
-  "Tyler": [
-    [-1, -1, 5], // Rank, Total Pts., and Rd 1 pick #
-    ["ARI", "L", ""], // Blank string will hold pts for each team
-    ["GB", "W", ""],
-    ["JAC", "W", ""],
-    ["IND", "L", ""],
-    ["MIN", "L", ""],
-    ["TB", "W", ""]
-  ],
-  "Howard": [
-    [-1, -1, 9], // Rank, Total Pts., and Rd 1 pick #
-    ["LA", "W", ""], // Blank string will hold pts for each team
-    ["CLE", "W", ""],
-    ["ATL", "W", ""],
-    ["PHI", "L", ""],
-    ["ARI", "W", ""],
-    ["DET", "W", ""]
-  ]
-}
+const standings = {};
 
-// #######################
-// Collect Wins and Losses
-// Updates teams then standings dicts
-// #######################
+const createStandings = () => {
+  for (const owner in ownersToPickNum) {
+    const pickNum = ownersToPickNum[owner];
+    standings[owner] = [[-1, -1, pickNum]];
+  };
+  for (const team in teams) {
+    const ownership = teams[team];
+    const winsOwner = ownership.winsOwner;
+    const lossesOwner = ownership.lossesOwner;
+    if (winsOwner) {
+      standings[winsOwner].push([team, "W", ""]);
+    }
+    if (lossesOwner) {
+      standings[lossesOwner].push([team, "L", ""]);
+    }
+  };
+};
 
-// Uses API (1) to update teams with accurate wins, losses, and ties
-var xhttp = new XMLHttpRequest()
-xhttp.onreadystatechange = function () {
-  if (this.readyState == 4 && this.status == 200) {
-    // Turns string received from NFL into XML object
-    parser = new DOMParser()
-    var xmlDoc = parser.parseFromString(xhttp.responseText, "text/xml")
+console.log(standings);
 
-    // Iterates through each team
-    var x = xmlDoc.getElementsByTagName('teamStanding');
-    for (i = 0; i < x.length; i++) {
+createStandings();
 
+// var standings = {
+//   [narva]: [
+//     [-1, -1, 7], // Rank, Total Pts., and Rd 1 pick #
+//     ["OAK", "L", ""], // Blank string will hold pts for each team
+//     ["WAS", "L", ""],
+//     ["NYG", "L", ""],
+//     ["JAC", "L", ""],
+//     ["CHI", "L", ""],
+//     ["GB", "L", ""]
+//   ],
+//   [jamie]: [
+//     [-1, -1, 1], // Rank, Total Pts., and Rd 1 pick #
+//     ["MIA", "L", ""], // Blank string will hold pts for each team
+//     ["HOU", "W", ""],
+//     ["BAL", "W", ""],
+//     ["CLE", "L", ""],
+//     ["NYG", "W", ""],
+//     ["NO", "L", ""]
+//   ],
+//   [barbara]: [
+//     [-1, -1, 8], // Rank, Total Pts., and Rd 1 pick #
+//     ["NO", "W", ""], // Blank string will hold pts for each team
+//     ["PIT", "W", ""],
+//     ["HOU", "L", ""],
+//     ["CAR", "W", ""],
+//     ["SF", "W", ""],
+//     ["MIA", "W", ""]
+//   ],
+//   [jessica]: [
+//     [-1, -1, 4], // Rank, Total Pts., and Rd 1 pick #
+//     ["SEA", "W", ""], // Blank string will hold pts for each team
+//     ["DET", "L", ""],
+//     ["TEN", "L", ""],
+//     ["CAR", "L", ""],
+//     ["BAL", "L", ""],
+//     ["LAC", "L", ""]
+//   ],
+//   [hogan]: [
+//     [-1, -1, 6], // Rank, Total Pts., and Rd 1 pick #
+//     ["CIN", "L", ""], // Blank string will hold pts for each team
+//     ["LAC", "W", ""],
+//     ["IND", "W", ""],
+//     ["SF", "L", ""],
+//     ["ATL", "L", ""],
+//     ["SEA", "L", ""]
+//   ],
+//   [thome]: [
+//     [-1, -1, 3], // Rank, Total Pts., and Rd 1 pick #
+//     ["KC", "W", ""], // Blank string will hold pts for each team
+//     ["PHI", "W", ""],
+//     ["DEN", "L", ""],
+//     ["DAL", "L", ""],
+//     ["BUF", "W", ""],
+//     ["NE", "L", ""]
+//   ],
+//   [susan]: [
+//     [-1, -1, 10], // Rank, Total Pts., and Rd 1 pick #
+//     ["CHI", "W", ""], // Blank string will hold pts for each team
+//     ["TB", "L", ""],
+//     ["MIN", "W", ""],
+//     ["DEN", "W", ""],
+//     ["NYJ", "W", ""],
+//     ["PIT", "L", ""]
+//   ],
+//   [teamConn]: [
+//     [-1, -1, 2], // Rank, Total Pts., and Rd 1 pick #
+//     ["NE", "W", ""], // Blank string will hold pts for each team
+//     ["BUF", "L", ""],
+//     ["DAL", "W", ""],
+//     ["NYJ", "L", ""],
+//     ["TEN", "W", ""],
+//     ["WAS", "W", ""]
+//   ],
+//   [tyler]: [
+//     [-1, -1, 5], // Rank, Total Pts., and Rd 1 pick #
+//     ["ARI", "L", ""], // Blank string will hold pts for each team
+//     ["GB", "W", ""],
+//     ["JAC", "W", ""],
+//     ["IND", "L", ""],
+//     ["MIN", "L", ""],
+//     ["TB", "W", ""]
+//   ],
+//   [howard]: [
+//     [-1, -1, 9], // Rank, Total Pts., and Rd 1 pick #
+//     ["LA", "W", ""], // Blank string will hold pts for each team
+//     ["CLE", "W", ""],
+//     ["ATL", "W", ""],
+//     ["PHI", "L", ""],
+//     ["ARI", "W", ""],
+//     ["DET", "W", ""]
+//   ]
+// }
+
+const updateTeamStandings = (latestStandings) => {
+  for (let i = 0; i < latestStandings.length; i++) {
+      const teamStanding = latestStandings[i];
       // Key for the team in the standings dict
-      var teamAbbr = x[i].childNodes[0].getAttribute("abbr")
+      var teamAbbr = teamStanding.childNodes[0].getAttribute("abbr")
 
       // Switches JAX to JAC to fit the JSON data instead of XML data
       if (teamAbbr == "JAX") {
         teamAbbr = "JAC"
       }
 
-
       // Update wins, losses, then ties in the teams dict
-      teams[teamAbbr][2] = x[i].childNodes[1].getAttribute("overallWins")
-      teams[teamAbbr][3] = x[i].childNodes[1].getAttribute("overallLosses")
-      teams[teamAbbr][4] = x[i].childNodes[1].getAttribute("overallTies")
+      const currentTeam = teams[teamAbbr];
+      const standing = teamStanding.childNodes[1];
+      currentTeam.wins = standing.getAttribute("overallWins")
+      currentTeam.losses = standing.getAttribute("overallLosses")
+      currentTeam.ties = standing.getAttribute("overallTies")
     }
+}
 
-    // Updates the points per team and overall points in the standings dict
+const updateOwnerStandings = () => {
+      // Updates the points per team and overall points in the standings dict
     for (participant in standings) {
       var sumOfPoints = 0
       for (draftedTeam in standings[participant]) {
@@ -196,13 +285,28 @@ xhttp.onreadystatechange = function () {
       // Updates overall points
       standings[participant][0][1] = sumOfPoints
     }
+}
+
+// #######################
+// Collect Wins and Losses
+// Updates teams then standings dicts
+// #######################
+
+// Uses API (1) to update teams with accurate wins, losses, and ties
+var xhttp = new XMLHttpRequest()
+xhttp.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    // Turns string received from NFL into XML object
+    const parser = new DOMParser();
+    var xmlDoc = parser.parseFromString(xhttp.responseText, "text/xml")
+
+    // Iterates through each team
+    var teamStandings = xmlDoc.getElementsByTagName('teamStanding');
+    updateTeamStandings(teamStandings);
+    updateOwnerStandings();
 
     console.log(standings)
     console.log(teams)
-    // Determines each persons rank
-
-    var pointsCounter = 0
-
   }
 }
 
